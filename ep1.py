@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Apr 16 22:12:12 2019
+
+@author: insper
+"""
+
 # EP 2019-1: Escape Insper
 #
 # Alunos: 
