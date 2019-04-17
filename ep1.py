@@ -1,8 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Apr 16 22:12:12 2019
+
+@author: insper
+"""
+
 # EP 2019-1: Escape Insper
 #
 # Alunos: 
-# - aluno A: Fulano da Silva, fulanos@insper.edu.br
-# - aluno B: Sicrano de Almeida, sicranoa1@insper.edu.br
+# - aluno A: Lúcio Hallage Figueiredo, luciohf123@gmail.com
+# - aluno B: Beatriz Cabral Fernandes, beatrizcf2@al.insper.edu.br 
 
 def carregar_cenarios():
     cenarios = {
@@ -59,21 +66,25 @@ def main():
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
 
-        # Aluno A: substitua este comentário pelo código para imprimir 
-        # o cenário atual.
+        print(nome_cenario_atual)
+        print('-'*len(nome_cenario_atual))
+        for nomes,c in cenario_atual.items():
+            if nomes != 'opcoes':
+                print(c)
+                print()
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
         else:
-
-            # Aluno B: substitua este comentário e a linha abaixo pelo código
-            # para pedir a escolha do usuário.
-            escolha = ""
-
+            for escolhas,acoes in opcoes.items():
+                print(escolhas+': '+acoes)
+                
+            escolha=input("qual opção vc quer?")
+            
             if escolha in opcoes:
-                nome_cenario_atual = escolha
+                nome_cenario_atual= escolha
             else:
                 print("Sua indecisão foi sua ruína!")
                 game_over = True
