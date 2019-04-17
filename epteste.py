@@ -144,11 +144,28 @@ def main():
             print('B:Protoboard')
             print('C:Multimetro')
             print('D:Tripot')
-            resposta=input('Qual è o aparelho de medicão usado nos laboratorios?')
+            resposta=input('Carlos Ribeiro:Qual è o aparelho de medicão usado nos laboratorios?')
             if resposta=='C':
                 print('Carlos Ribeiro:Boa')
             else:
                 print('Que pena,perdeu 1 ponto na media!')
+                hp-=10
+        elif nome_cenario_atual== 'professor4':      
+            print('PROTOTIPOS PRA QUARTA')
+            print()
+            print('Deu a louca em Victor e Gabriel')
+            print()
+            print('Essa não!É segunda e voce so tem 2 dias pra fazer 2 prototipos,vc pede o adiamento, mas ele te faz uma pergunta em troca?') 
+            print()
+            print('A:')
+            print('B:')
+            print('C:')
+            print('D:')
+            resposta=input('Victor Macul:?')
+            if resposta=='C':
+                print('Carlos Ribeiro:Boa')
+            else:
+                print('Leia o DYM pelo amor de deus,perdeu 1 ponto na media!')
                 hp-=10
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
