@@ -145,6 +145,11 @@ def main():
             print('C:Multimetro')
             print('D:Tripot')
             resposta=input('Qual è o aparelho de medicão usado nos laboratorios?')
+            if resposta=='C':
+                print('Carlos Ribeiro:Boa')
+            else:
+                print('Que pena,perdeu 1 ponto na media!')
+                hp-=10
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
