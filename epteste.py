@@ -14,9 +14,8 @@ def carregar_cenarios():
             "opcoes": {
                 "andar professor": "Tomar o elevador para o andar do professor",
                 "biblioteca": "Ir para a biblioteca",
-                'andar 1':'primeiro andar',
-                'andar 2':'segundo andar',
-                'andar 3':'terceiro andar'
+                'elevador':'acesso a todos os andares',
+                'Predio Novo':'vá para o predio novo'
             }
         },
         "andar professor": {
@@ -38,52 +37,85 @@ def carregar_cenarios():
             "titulo": "Caverna da tranquilidade",
             "descricao": "Voce esta na biblioteca",
             "opcoes": {
-                "inicio": "Voltar para o saguao de entrada"
+                "inicio": "Voltar para o saguao de entrada",
+                'livro':'pegar um livro'
             }
         },"andar 1": {
             "titulo": "Andar da Verdade",
             "descricao": "Voce chegou ao andar da sala de um professor",
             "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada",
-                "professor1": "Falar com o professor"}}
+                "professor1": "Falar com o professor",
+                'elevador':'acesso a todos os andares'}}
     ,"professor1": {
             "titulo": "Aula de GDE",
             "descricao": "Voce chegou ao andar da sala do seu professor",
             "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada"}}
+                'elevador':'acesso a todos os andares'}}
     ,"andar 2": {
             "titulo": "Andar da Ganancia",
             "descricao": "Voce chegou ao andar da sala de um professor",
             "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada",
-                'professor2':'Entra na sala de um professor'}}
+                'professor2':'Entra na sala de um professor',
+                'elevador':'acesso a todos os andares'}}
     ,"professor2": {
             "titulo": "Aula de ModSim",
             "descricao": "Voce entrou na sala do seu professor",
-            "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada"}}
+            "opcoes": {'elevador':'acesso a todos os andares'}}
     ,"imprimir": {
             "titulo": "vc esta na impressora",
             "descricao": "Voce chegou ao andar da sala do seu professor",
             "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada"}}
+                    'elevador':'acesso a todos os andares'}}
     ,"andar 3": {
             "titulo": "Andar da Luxuria",
             "descricao": "Voce chegou ao andar da sala de um professor",
             "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada",
-                'professor3':'Entre na sala de um professor'}}
+                'professor3':'Entre na sala de um professor',
+                'elevador':'acesso a todos os andares'}}
     ,"professor3": {
             "titulo": "Aula de InstruMed",
             "descricao": "Voce chegou ao andar da sala do seu professor",
             "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada"}}}
+                    'elevador':'acesso a todos os andares'}}
+    ,"elevador": {
+            "titulo": "Elevador da queda",
+            "descricao": "Voce entrou no elevador",
+            "opcoes": {
+                "inicio": "Tomar o elevador para o saguao de entrada",
+                'andar 1':'primeiro andar',
+                'andar 2':'segundo andar',
+                'andar 3':'terceiro andar',
+                'andar 4':'quarto andar'}}
+    ,"andar 4": {
+            "titulo": "Andar de experimentos",
+            "descricao": "Voce chegou ao andar da sala do seu professor",
+            "opcoes": {
+                "jogar": "Jogar um mario kart com o Fuka",
+                'elevador':'acesso a todos os andares',
+                'professor4':'Entre na sala de um professor'}}
+    ,"professor4": {
+            "titulo": "Aula de NatDes",
+            "descricao": "Voce chegou na sala do seu professor",
+            "opcoes": {
+                    'elevador':'acesso a todos os andares'}}
+    ,"livro": {
+            "titulo": "Escolha um livro",
+            "descricao": "Voce chegou na estante em um instante oooooaaaaauuuuu!!!",
+            "opcoes": {
+                    "inicio": "Voltar para o saguao de entrada"}}
+    ,"Predio Novo": {
+            "titulo": "vc esta atravessando a rua e",
+            "descricao": "MORREU!!!!!!!!!!!!!!!!!!!!!!",
+            "opcoes": {
+        }}}
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 
 
 def main():
-    hp=10
+    d=0
+    p=0
+    hp=100
     print("Na hora do sufoco!")
     print("------------------")
     print()
@@ -144,12 +176,43 @@ def main():
             print('B:Protoboard')
             print('C:Multimetro')
             print('D:Tripot')
-            resposta=input('Qual è o aparelho de medicão usado nos laboratorios?')
+            resposta=input('Carlos Ribeiro:Qual è o aparelho de medicão usado nos laboratorios?')
             if resposta=='C':
                 print('Carlos Ribeiro:Boa')
             else:
                 print('Que pena,perdeu 1 ponto na media!')
                 hp-=10
+        elif nome_cenario_atual== 'professor4':      
+            print('PROTOTIPOS PRA QUARTA')
+            print()
+            print('Deu a louca em Victor e Gabriel')
+            print()
+            print('Essa não!É segunda e voce so tem 2 dias pra fazer 2 prototipos,vc pede o adiamento, mas ele te faz uma pergunta em troca?') 
+            print()
+            if d==1:
+                print('Uau!!! vc tem o livro do dym,dessa vez vou te ajudar')
+            print('A:')
+            print('B:')
+            print('C:')
+            print('D:')
+            resposta=input('Victor Macul:?')
+            if resposta=='C':
+                print('Carlos Ribeiro:Boa')
+            else:
+                print('Leia o DYM pelo amor de deus,perdeu 1 ponto na media!')
+                hp-=10
+        elif nome_cenario_atual== 'livro':
+            print()
+            print('A:Livro Python')
+            print('B:DYM')
+            escolha=input('Qual livro vc quer?')
+            if escolha=='A':
+                print('Ótima escolha,agora vc podera imprimi-lo, e isso pode te ajudar a adiar o ep')
+                p=1
+            elif escolha=='B':
+                print('Victor Macul ficará orgulhoso')
+                d=1
+            
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
