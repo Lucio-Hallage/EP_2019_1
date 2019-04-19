@@ -22,7 +22,8 @@ def carregar_cenarios():
             "descricao": "Voce chegou ao andar da sala do seu professor",
             "opcoes": {
                 "elevador": "Acesso a todos os andares",
-                "professor": "Falar com o professor"
+                "professor": "Falar com o professor",
+                'restaurante':'Vá comer no restaurante'
             }
         },
         "professor": {
@@ -86,7 +87,8 @@ def carregar_cenarios():
                 'andar 2':'segundo andar',
                 'andar 3':'terceiro andar',
                 'andar 4':'quarto andar',
-                "andar professor": "Tomar o elevador para o andar do professor"}}
+                "andar professor": "Tomar o elevador para o andar do professor",
+                'subsolo':'va para o subsolo'}}
     ,"andar 4": {
             "titulo": "Andar de experimentos",
             "descricao": "Voce chegou ao andar da sala do seu professor",
@@ -111,8 +113,25 @@ def carregar_cenarios():
     ,"jogar": {
             "titulo": "vish,logo contra o Fukada,o melhor jogador de Mario kart do insper",
             "descricao": "Não teve jeito vc perdeu );",
-            "opcoes": {'elevador':'acesso a todos os andares'
-        }}}
+            "opcoes": {'elevador':'acesso a todos os andares'}}
+    ,"subsolo": {
+            "titulo": "Subsolo da Escuridão",
+            "descricao": "Tome cuidado com o escuro",
+            "opcoes": {'elevador':'acesso a todos os andares',
+                       'techlab':'Va para o techlab'}}
+    ,"techlab": {
+            "titulo": "Voce esta no Techlab...",
+            "descricao": "Aqui é cheio de invencoes... Nossa mas o q sera aquilo??? Q estranho...",
+            "opcoes": {'subsolo':'va para o subsolo'}}
+    ,"auditorio": {
+            "titulo": "Auditorio",
+            "descricao": "INTEGRAÇÃO COM FDA",
+            "opcoes": {'inicio':'acesso a todos os andares'}}
+    ,"restaurante": {
+            "titulo": "Restaurante da restauração",
+            "descricao": "comer,comer,comer,comer e o melhor para poder crescer",
+            "opcoes": {'elevador':'acesso a todos os andares'}}
+    }
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 
@@ -133,9 +152,11 @@ def combate():
     return competidores,vilao_atual
 
 def main():
+    arma_de_portais=0
     d=0
     p=0
     hp=100
+    r=0
     g=0
     m=0
     i=0
@@ -280,20 +301,37 @@ def main():
                 print()
                 print('Estou impressionado')
         elif nome_cenario_atual== 'restaurante':
-            #add codigo restaurante
+            if r==0:
+                print('Voce deve estar com fome')
+                print('Coma uma comida e ganhe 20 de hp')
+                print('Delicious!!!')
+                eu['hp']+=20
+                print('hp atual{0}'.format(eu['hp']))
+                r=1
+            else:
+                print('Voce acabou com toda a nossa comida!')
+                print()
+                print('Parece que vc comeu muuuito da ultima vez')
+        
         elif nome_cenario_atual== 'techlab':
-            #add codigo techlab/subsolo
+            print('Vc encontrou uma invencao bem esquisita no TechLab... Deseja verificar o que é? ')
+            print('Nusssssss! Parece que vc encontrou um portal de teletransporte..')
+            arma_de_portais=1
         elif nome_cenario_atual== 'auditorio':
-            #add codigo auditorio
+            print('FDA')
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
         else:
             for escolhas,acoes in opcoes.items():
                 print(escolhas+': '+acoes)
+            if arma_de_portais==1:
+                print()
+                print('arma de portais: Te teleporta para QUALQUER lugar do jogo')
+                print('menos para salas bloqueadas(mesmo desbloqueadas)')
                 
             escolha=input("qual opção vc quer?")
-            while escolha=='professor' and i==0 and m==0 and n==0 and g==0 and nome_cenario_atual=='professor':
+            while escolha=='professor' and i==0 and m==0 and n==0 and g==0 and nome_cenario_atual=='andar professor':
                 print('Sala bloqueada!!! ')
                 print('Para desbloquear vc tem que falar com todos os professores antes de ir para a sala do Raul')
                 print()
@@ -303,8 +341,20 @@ def main():
                     
             if escolha in opcoes:
                 nome_cenario_atual= escolha
-            elif escolha=='arma de portais':
-                print('todas as opcoes')
+            elif escolha=='arma de portais' and arma_de_portais==1:
+                print("inicio: Tomar o elevador para o saguao de entrada")
+                print('andar 1:primeiro andar')
+                print('andar 2:segundo andar')
+                print('andar 3:terceiro andar')
+                print('andar 4:quarto andar')
+                print("andar professor: Tomar o elevador para o andar do professor")
+                print('subsolo')
+                print('restaurante')
+                print()
+                print()
+                print()
+                escolha=input("qual opção vc quer?")
+                nome_cenario_atual= escolha
             else:
                 print("Sua indecisão foi sua ruína!")
                 game_over = True
