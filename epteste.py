@@ -12,7 +12,6 @@ def carregar_cenarios():
             "titulo": "Saguao do perigo",
             "descricao": "Voce esta no saguao de entrada do insper",
             "opcoes": {
-                "andar professor": "Tomar o elevador para o andar do professor",
                 "biblioteca": "Ir para a biblioteca",
                 'elevador':'acesso a todos os andares',
                 'Predio Novo':'vá para o predio novo'
@@ -22,7 +21,7 @@ def carregar_cenarios():
             "titulo": "Andar do desespero",
             "descricao": "Voce chegou ao andar da sala do seu professor",
             "opcoes": {
-                "inicio": "Tomar o elevador para o saguao de entrada",
+                "elevador": "Acesso a todos os andares",
                 "professor": "Falar com o professor"
             }
         },
@@ -56,7 +55,8 @@ def carregar_cenarios():
             "descricao": "Voce chegou ao andar da sala de um professor",
             "opcoes": {
                 'professor2':'Entra na sala de um professor',
-                'elevador':'acesso a todos os andares'}}
+                'elevador':'acesso a todos os andares',
+                'imprimir':'vai ate a impressora'}}
     ,"professor2": {
             "titulo": "Aula de ModSim",
             "descricao": "Voce entrou na sala do seu professor",
@@ -85,7 +85,8 @@ def carregar_cenarios():
                 'andar 1':'primeiro andar',
                 'andar 2':'segundo andar',
                 'andar 3':'terceiro andar',
-                'andar 4':'quarto andar'}}
+                'andar 4':'quarto andar',
+                "andar professor": "Tomar o elevador para o andar do professor"}}
     ,"andar 4": {
             "titulo": "Andar de experimentos",
             "descricao": "Voce chegou ao andar da sala do seu professor",
@@ -109,7 +110,7 @@ def carregar_cenarios():
             "opcoes": {}}
     ,"jogar": {
             "titulo": "vish,logo contra o Fukada,o melhor jogador de Mario kart do insper",
-            "descricao": "Não teve jeito vc perdeu);",
+            "descricao": "Não teve jeito vc perdeu );",
             "opcoes": {'elevador':'acesso a todos os andares'
         }}}
     nome_cenario_atual = "inicio"
@@ -225,7 +226,14 @@ def main():
                 print('Victor Macul ficará orgulhoso')
                 d=1
         elif nome_cenario_atual== 'imprimir':
-            print('')
+            if p==1:
+                print('Uau!!!vc Tem um livro de python,o professor raul ira adorar')
+                print()
+                print('vc ganhou 0,5 pontos na media')
+                hp+=5
+            else:
+                print()
+                print('Estou impressionado')
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
@@ -235,7 +243,10 @@ def main():
                 
             escolha=input("qual opção vc quer?")
             while escolha=='professor' and i==0 and m==0 and n==0 and g==0:
-                print('vc tem que falar com todos os professores antes de ir para a sala do Raul')
+                print('Sala bloqueada!!! ')
+                print('Para desbloquear vc tem que falar com todos os professores antes de ir para a sala do Raul')
+                print()
+                print('Volte para o elevador')
                 escolha=input("qual opção vc quer?")
            
                     
@@ -247,7 +258,7 @@ def main():
                 game_over = True
 
     print("Você morreu!")
-
+#adicionar o auditorio,restaurante,estacionamento
 
 # Programa principal.
 if __name__ == "__main__":
