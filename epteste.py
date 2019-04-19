@@ -116,6 +116,21 @@ def carregar_cenarios():
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 
+def combate():
+    competidores={'avatar':{
+            'hp':100,
+            'atk':20,
+            'def':10}
+    ,'zumbi veterano':{
+            'hp':40,
+            'atk':12,
+            "def":0}
+    ,'Raul Alienigena':{
+            'hp':200,
+            'atk':40,
+            'def':20}}
+    vilao_atual='zumbi veterano'
+    return competidores,vilao_atual
 
 def main():
     d=0
@@ -125,6 +140,7 @@ def main():
     m=0
     i=0
     n=0
+    c=0
     print("Na hora do sufoco!")
     print("------------------")
     print()
@@ -137,16 +153,45 @@ def main():
     print()
 
     cenarios, nome_cenario_atual = carregar_cenarios()
-
+    competidores,vilao_atual=combate()
     game_over = False
     while not game_over:
+    
+        if c%4==0 and c!=0:
+            eu=competidores['avatar']
+            inimigo={'hp':40,'atk':12,"def":0}
+            print()
+            print('Voce achou um zumbi veterano pela a escola')
+            print()
+            print('Seus status de combate')
+            print(eu)
+            print()
+            print('Status de combate de seu oponente')
+            print(inimigo)
+            print()
+            
+            decida=input('correr ou lutar?')
+            while eu['hp']>0 and inimigo['hp']>0 and decida=='lutar':
+                print('Sua vez de atacar')
+                print('Voce tirou {0} de hp do seu oponente'.format(eu['atk']-inimigo['def']))
+                inimigo['hp']-=eu['atk']-inimigo['def']
+                if inimigo['hp']>0:
+                    print('Vez do seu inimigo')
+                    print('Voce perdeu {0} de hp para seu oponente'.format(inimigo['atk']-eu['def']))
+                    eu['hp']-=inimigo['atk']-eu['def']
+                    decida=input('correr ou lutar?')
+                else:
+                    print('Parabens vc derrotou o Zumbi')
+            c+=1
+                    
+        else:
+            c+=1
         cenario_atual = cenarios[nome_cenario_atual]
-
         print(nome_cenario_atual)
         print('-'*len(nome_cenario_atual))
-        for nomes,c in cenario_atual.items():
+        for nomes,des in cenario_atual.items():
             if nomes != 'opcoes':
-                print(c)
+                print(des)
                 print()
 
         opcoes = cenario_atual['opcoes']
@@ -234,6 +279,12 @@ def main():
             else:
                 print()
                 print('Estou impressionado')
+        elif nome_cenario_atual== 'restaurante':
+            #add codigo restaurante
+        elif nome_cenario_atual== 'techlab':
+            #add codigo techlab/subsolo
+        elif nome_cenario_atual== 'auditorio':
+            #add codigo auditorio
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
@@ -242,7 +293,7 @@ def main():
                 print(escolhas+': '+acoes)
                 
             escolha=input("qual opção vc quer?")
-            while escolha=='professor' and i==0 and m==0 and n==0 and g==0:
+            while escolha=='professor' and i==0 and m==0 and n==0 and g==0 and nome_cenario_atual=='professor':
                 print('Sala bloqueada!!! ')
                 print('Para desbloquear vc tem que falar com todos os professores antes de ir para a sala do Raul')
                 print()
@@ -252,7 +303,8 @@ def main():
                     
             if escolha in opcoes:
                 nome_cenario_atual= escolha
-            
+            elif escolha=='arma de portais':
+                print('todas as opcoes')
             else:
                 print("Sua indecisão foi sua ruína!")
                 game_over = True
