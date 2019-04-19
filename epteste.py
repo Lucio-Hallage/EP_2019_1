@@ -106,7 +106,11 @@ def carregar_cenarios():
     ,"Predio Novo": {
             "titulo": "vc esta atravessando a rua e",
             "descricao": "MORREU!!!!!!!!!!!!!!!!!!!!!!",
-            "opcoes": {
+            "opcoes": {}}
+    ,"jogar": {
+            "titulo": "vish,logo contra o Fukada,o melhor jogador de Mario kart do insper",
+            "descricao": "Não teve jeito vc perdeu);",
+            "opcoes": {'elevador':'acesso a todos os andares'
         }}}
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
@@ -116,6 +120,10 @@ def main():
     d=0
     p=0
     hp=100
+    g=0
+    m=0
+    i=0
+    n=0
     print("Na hora do sufoco!")
     print("------------------")
     print()
@@ -152,7 +160,8 @@ def main():
                 print('Parabens,Voce passou em GDE')
             else:
                 print('Voce erroooooou e perdeu 1 ponto na media')
-                hp-=1
+                hp-=10
+            g=1
         elif nome_cenario_atual== 'professor2': 
             print('A wild Pelicano has appeared!!!')
             time.sleep(2)
@@ -167,6 +176,7 @@ def main():
             else:
                 print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrado,perdeu 1 ponto na media!')
                 hp-=10
+            m=1
         elif nome_cenario_atual== 'professor3': 
             print('OH NO')
             print()
@@ -182,6 +192,7 @@ def main():
             else:
                 print('Que pena,perdeu 1 ponto na media!')
                 hp-=10
+            i=1
         elif nome_cenario_atual== 'professor4':      
             print('PROTOTIPOS PRA QUARTA')
             print()
@@ -191,16 +202,17 @@ def main():
             print()
             if d==1:
                 print('Uau!!! vc tem o livro do dym,dessa vez vou te ajudar')
-            print('A:')
-            print('B:')
-            print('C:')
-            print('D:')
-            resposta=input('Victor Macul:?')
+            print('A:É um prototipo pronto para a entrega')
+            print('B:É um prototipo que ainda está em skecth ')
+            print('C:É um prototipo feito para entender melhor o problema')
+            print('D:É um prototipo quase em seu estado final')
+            resposta=input('Victor Macul:O que é um prototipo sujo?')
             if resposta=='C':
                 print('Carlos Ribeiro:Boa')
             else:
                 print('Leia o DYM pelo amor de deus,perdeu 1 ponto na media!')
                 hp-=10
+            n=1
         elif nome_cenario_atual== 'livro':
             print()
             print('A:Livro Python')
@@ -212,7 +224,8 @@ def main():
             elif escolha=='B':
                 print('Victor Macul ficará orgulhoso')
                 d=1
-            
+        elif nome_cenario_atual== 'imprimir':
+            print('')
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
@@ -221,9 +234,14 @@ def main():
                 print(escolhas+': '+acoes)
                 
             escolha=input("qual opção vc quer?")
-            
+            while escolha=='professor' and i==0 and m==0 and n==0 and g==0:
+                print('vc tem que falar com todos os professores antes de ir para a sala do Raul')
+                escolha=input("qual opção vc quer?")
+           
+                    
             if escolha in opcoes:
                 nome_cenario_atual= escolha
+            
             else:
                 print("Sua indecisão foi sua ruína!")
                 game_over = True
