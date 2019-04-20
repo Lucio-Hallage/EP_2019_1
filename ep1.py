@@ -66,12 +66,10 @@ def main():
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
 
-        print(nome_cenario_atual)
-        print('-'*len(nome_cenario_atual))
-        for nomes,c in cenario_atual.items():
-            if nomes != 'opcoes':
-                print(c)
-                print()
+        print(cenario_atual['titulo'])
+        print('-'*len(cenario_atual['titulo']))
+        print(cenario_atual['descricao'])
+        print()
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
