@@ -14,10 +14,11 @@ def carregar_cenarios():
             "opcoes": {
                 "biblioteca": "Ir para a biblioteca",
                 'elevador':'acesso a todos os andares',
-                'Predio Novo':'vá para o predio novo'
+                'predionovo':'vá para o predio novo',
+                'auditorio':'vá para o predio novo'
             }
         },
-        "andar professor": {
+        "andarprofessor": {
             "titulo": "Andar do desespero",
             "descricao": "Voce chegou ao andar da sala do seu professor",
             "opcoes": {
@@ -28,10 +29,8 @@ def carregar_cenarios():
         },
         "professor": {
             "titulo": "O monstro do Python",
-            "descricao": "Voce foi pedir para o professor adiar o EP. "
-                         "O professor revelou que é um monstro disfarçado "
-                         "e devorou sua alma.",
-            "opcoes": {}
+            "descricao": "Voce entrou na sala de Raul Ikeda",
+            "opcoes": {'VITORIA':'Ganhou o JOGO'}
         },
         "biblioteca": {
             "titulo": "Caverna da tranquilidade",
@@ -40,7 +39,7 @@ def carregar_cenarios():
                 "inicio": "Voltar para o saguao de entrada",
                 'livro':'pegar um livro'
             }
-        },"andar 1": {
+        },"andar1": {
             "titulo": "Andar da Verdade",
             "descricao": "Voce chegou ao andar da sala de um professor",
             "opcoes": {
@@ -51,7 +50,7 @@ def carregar_cenarios():
             "descricao": "Voce chegou ao andar da sala do seu professor",
             "opcoes": {
                 'elevador':'acesso a todos os andares'}}
-    ,"andar 2": {
+    ,"andar2": {
             "titulo": "Andar da Ganancia",
             "descricao": "Voce chegou ao andar da sala de um professor",
             "opcoes": {
@@ -63,11 +62,11 @@ def carregar_cenarios():
             "descricao": "Voce entrou na sala do seu professor",
             "opcoes": {'elevador':'acesso a todos os andares'}}
     ,"imprimir": {
-            "titulo": "vc esta na impressora",
+            "titulo": "Impressora",
             "descricao": "Voce chegou ao andar da sala do seu professor",
             "opcoes": {
                     'elevador':'acesso a todos os andares'}}
-    ,"andar 3": {
+    ,"andar3": {
             "titulo": "Andar da Luxuria",
             "descricao": "Voce chegou ao andar da sala de um professor",
             "opcoes": {
@@ -83,13 +82,13 @@ def carregar_cenarios():
             "descricao": "Voce entrou no elevador",
             "opcoes": {
                 "inicio": "Tomar o elevador para o saguao de entrada",
-                'andar 1':'primeiro andar',
-                'andar 2':'segundo andar',
-                'andar 3':'terceiro andar',
-                'andar 4':'quarto andar',
-                "andar professor": "Tomar o elevador para o andar do professor",
+                'andar1':'primeiro andar',
+                'andar2':'segundo andar',
+                'andar3':'terceiro andar',
+                'andar4':'quarto andar',
+                "andarprofessor": "Tomar o elevador para o andar do professor",
                 'subsolo':'va para o subsolo'}}
-    ,"andar 4": {
+    ,"andar4": {
             "titulo": "Andar de experimentos",
             "descricao": "Voce chegou ao andar da sala do seu professor",
             "opcoes": {
@@ -106,12 +105,12 @@ def carregar_cenarios():
             "descricao": "Voce chegou na estante em um instante oooooaaaaauuuuu!!!",
             "opcoes": {
                     "inicio": "Voltar para o saguao de entrada"}}
-    ,"Predio Novo": {
+    ,"predionovo": {
             "titulo": "vc esta atravessando a rua e",
             "descricao": "MORREU!!!!!!!!!!!!!!!!!!!!!!",
             "opcoes": {}}
     ,"jogar": {
-            "titulo": "vish,logo contra o Fukada,o melhor jogador de Mario kart do insper",
+            "titulo": "FUKA Rei do mario kart",
             "descricao": "Não teve jeito vc perdeu );",
             "opcoes": {'elevador':'acesso a todos os andares'}}
     ,"subsolo": {
@@ -120,12 +119,12 @@ def carregar_cenarios():
             "opcoes": {'elevador':'acesso a todos os andares',
                        'techlab':'Va para o techlab'}}
     ,"techlab": {
-            "titulo": "Voce esta no Techlab...",
-            "descricao": "Aqui é cheio de invencoes... Nossa mas o q sera aquilo??? Q estranho...",
+            "titulo": "Techlab da Gula",
+            "descricao": "Voce esta no Techlab...Aqui é cheio de invencoes... Nossa mas o q sera aquilo??? Q estranho...",
             "opcoes": {'subsolo':'va para o subsolo'}}
     ,"auditorio": {
             "titulo": "Auditorio",
-            "descricao": "INTEGRAÇÃO COM FDA",
+            "descricao": "Voce esta no auditorio",
             "opcoes": {'inicio':'acesso a todos os andares'}}
     ,"restaurante": {
             "titulo": "Restaurante da restauração",
@@ -140,28 +139,22 @@ def combate():
             'hp':100,
             'atk':20,
             'def':10}
-    ,'zumbi veterano':{
-            'hp':40,
-            'atk':12,
+    ,'Monstro do techlab':{
+            'hp':120,
+            'atk':15,
             "def":0}
     ,'Raul Alienigena':{
             'hp':200,
             'atk':40,
             'def':20}}
-    vilao_atual='zumbi veterano'
+    vilao_atual='Monstro do techlab'
     return competidores,vilao_atual
 
 def main():
-    arma_de_portais=0
-    d=0
-    p=0
-    hp=100
+    nota=100
     r=0
-    g=0
-    m=0
-    i=0
-    n=0
     c=0
+    Inventario=[]
     print("Na hora do sufoco!")
     print("------------------")
     print()
@@ -175,6 +168,7 @@ def main():
 
     cenarios, nome_cenario_atual = carregar_cenarios()
     competidores,vilao_atual=combate()
+    eu=competidores['avatar']
     game_over = False
     while not game_over:
     
@@ -192,6 +186,9 @@ def main():
             print()
             
             decida=input('correr ou lutar?')
+            while decida!='lutar' and decida!='correr':
+                print('Opção Inválida')
+                decida=input('correr ou lutar?')
             while eu['hp']>0 and inimigo['hp']>0 and decida=='lutar':
                 print('Sua vez de atacar')
                 print('Voce tirou {0} de hp do seu oponente'.format(eu['atk']-inimigo['def']))
@@ -200,22 +197,28 @@ def main():
                     print('Vez do seu inimigo')
                     print('Voce perdeu {0} de hp para seu oponente'.format(inimigo['atk']-eu['def']))
                     eu['hp']-=inimigo['atk']-eu['def']
-                    decida=input('correr ou lutar?')
-                else:
-                    print('Parabens vc derrotou o Zumbi')
-            c+=1
-                    
-        else:
+                    print('Seus status de combate')
+                    print(eu)
+                    print('Status de combate de seu oponente')
+                    print(inimigo)
+                    decida=input('Quer continuar:correr ou lutar?')
+                    while decida!='lutar' and decida!='correr':
+                        print('Opção Inválida')
+                        decida=input('Quer continuar:correr ou lutar?')
+            if eu['hp']<=0:
+                game_over=True
+            else:
+                print('Parabens vc derrotou o zumbi')
+                c+=1
+        else:       
             c+=1
         cenario_atual = cenarios[nome_cenario_atual]
-        print(nome_cenario_atual)
-        print('-'*len(nome_cenario_atual))
-        for nomes,des in cenario_atual.items():
-            if nomes != 'opcoes':
-                print(des)
-                print()
+        print(cenario_atual['titulo'])
+        print('-'*len(cenario_atual['titulo']))
+        print(cenario_atual['descricao'])
+        print()
 
-        opcoes = cenario_atual['opcoes']
+        
         if nome_cenario_atual== 'professor1':
             print('Parece que hoje não é seu dia de sorte!O professor de GDE apareceu!!!')
             print('A:NatDES')
@@ -223,12 +226,15 @@ def main():
             print('C:InstruMed')
             print('D:DesSoft')
             resposta=input('Fernando Ribeiro:Qual materia resume o método científico?')
+            while resposta!='A' and resposta!='B' and resposta!='C' and resposta!='D':
+                print('Opção Inválida')
+                resposta=input('Fernando Ribeiro:Qual materia resume o método científico?')
             if resposta=='B' or resposta=='Modsim':
                 print('Parabens,Voce passou em GDE')
             else:
                 print('Voce erroooooou e perdeu 1 ponto na media')
-                hp-=10
-            g=1
+                nota-=10
+            Inventario.append('GDE')
         elif nome_cenario_atual== 'professor2': 
             print('A wild Pelicano has appeared!!!')
             time.sleep(2)
@@ -238,12 +244,15 @@ def main():
             print('C:Equacao a diferencas')
             print('D:Tx de variacao instantanea')
             resposta=input('Pelicano:O que é uma derivada?')
+            while resposta!='A' and resposta!='B' and resposta!='C' and resposta!='D':
+                print('Opção Inválida')
+                resposta=input('Pelicano:O que é uma derivada?')
             if resposta=='D':
                 print('Eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeexato')
             else:
                 print('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrado,perdeu 1 ponto na media!')
-                hp-=10
-            m=1
+                nota-=10
+            Inventario.append('ModSim')
         elif nome_cenario_atual== 'professor3': 
             print('OH NO')
             print()
@@ -254,12 +263,15 @@ def main():
             print('C:Multimetro')
             print('D:Tripot')
             resposta=input('Carlos Ribeiro:Qual è o aparelho de medicão usado nos laboratorios?')
+            while resposta!='A' and resposta!='B' and resposta!='C' and resposta!='D':
+                print('Opção Inválida')
+                resposta=input('Carlos Ribeiro:Qual è o aparelho de medicão usado nos laboratorios?')
             if resposta=='C':
                 print('Carlos Ribeiro:Boa')
             else:
                 print('Que pena,perdeu 1 ponto na media!')
-                hp-=10
-            i=1
+                nota-=10
+            Inventario.append('instrumed')
         elif nome_cenario_atual== 'professor4':      
             print('PROTOTIPOS PRA QUARTA')
             print()
@@ -267,36 +279,43 @@ def main():
             print()
             print('Essa não!É segunda e voce so tem 2 dias pra fazer 2 prototipos,vc pede o adiamento, mas ele te faz uma pergunta em troca?') 
             print()
-            if d==1:
+            if 'DYM' in Inventario:
                 print('Uau!!! vc tem o livro do dym,dessa vez vou te ajudar')
-            print('A:É um prototipo pronto para a entrega')
-            print('B:É um prototipo que ainda está em skecth ')
-            print('C:É um prototipo feito para entender melhor o problema')
-            print('D:É um prototipo quase em seu estado final')
-            resposta=input('Victor Macul:O que é um prototipo sujo?')
-            if resposta=='C':
-                print('Carlos Ribeiro:Boa')
             else:
-                print('Leia o DYM pelo amor de deus,perdeu 1 ponto na media!')
-                hp-=10
-            n=1
+                print('A:É um prototipo pronto para a entrega')
+                print('B:É um prototipo que ainda está em skecth ')
+                print('C:É um prototipo feito para entender melhor o problema')
+                print('D:É um prototipo quase em seu estado final')
+                resposta=input('Victor Macul:O que é um prototipo sujo?')
+                while resposta!='A' and resposta!='B' and resposta!='C' and resposta!='D':
+                    print('Opção Inválida')
+                    resposta=input('Victor Macul:O que é um prototipo sujo?')
+                if resposta=='C':
+                    print('Victor Macul:Boa')
+                else:
+                    print('Leia o DYM pelo amor de deus,perdeu 1 ponto na media!')
+                    nota-=10
+            Inventario.append('Natdes')
         elif nome_cenario_atual== 'livro':
             print()
             print('A:Livro Python')
             print('B:DYM')
-            escolha=input('Qual livro vc quer?')
-            if escolha=='A':
+            resposta=input('Qual livro vc quer?')
+            while resposta!='A' and resposta!='B':
+                    print('Opção Inválida')
+                    resposta=input('Qual livro vc quer?')
+            if resposta=='A':
                 print('Ótima escolha,agora vc podera imprimi-lo, e isso pode te ajudar a adiar o ep')
-                p=1
-            elif escolha=='B':
+                Inventario.append('Livro Python')
+            elif resposta=='B':
                 print('Victor Macul ficará orgulhoso')
-                d=1
+                Inventario.append('DYM')
         elif nome_cenario_atual== 'imprimir':
-            if p==1:
+            if 'Livro Python' in Inventario:
                 print('Uau!!!vc Tem um livro de python,o professor raul ira adorar')
                 print()
                 print('vc ganhou 0,5 pontos na media')
-                hp+=5
+                nota+=5
             else:
                 print()
                 print('Estou impressionado')
@@ -314,53 +333,170 @@ def main():
                 print('Parece que vc comeu muuuito da ultima vez')
         
         elif nome_cenario_atual== 'techlab':
-            print('Vc encontrou uma invencao bem esquisita no TechLab... Deseja verificar o que é? ')
-            print('Nusssssss! Parece que vc encontrou um portal de teletransporte..')
-            arma_de_portais=1
+            if 'Arma de portais' not in Inventario:
+                eu=competidores['avatar']
+                inimigo=competidores[vilao_atual]
+                print('OOOOOOOOOH')
+                print()
+                print('Voce achou um Monstro pela no Techlab')
+                print()
+                print('Seus status de combate')
+                print(eu)
+                print()
+                print('Status de combate de seu oponente')
+                print(inimigo)
+                print() 
+                decida=input('correr ou lutar?')
+                while decida!='lutar' and decida!='correr':
+                    print('Opção Inválida')
+                    decida=input('correr ou lutar?')
+                while eu['hp']>0 and inimigo['hp']>0 and decida=='lutar':
+                    print('Sua vez de atacar')
+                    print('Voce tirou {0} de hp do seu oponente'.format(eu['atk']-inimigo['def']))
+                    inimigo['hp']-=eu['atk']-inimigo['def']
+                    if inimigo['hp']>0:
+                        print('Vez do seu inimigo')
+                        print('Voce perdeu {0} de hp para seu oponente'.format(inimigo['atk']-eu['def']))
+                        eu['hp']-=inimigo['atk']-eu['def']
+                        print('Seus status de combate')
+                        print(eu)
+                        print('Status de combate de seu oponente')
+                        print(inimigo)
+                        decida=input('correr ou lutar?')
+                        while decida!='lutar' and decida!='correr':
+                            print('Opção Inválida')
+                            decida=input('correr ou lutar?')
+                if inimigo['hp']<=0:
+                    print('Vc encontrou uma invencao bem esquisita no TechLab... Deseja verificar o que é? ')
+                    print('Nusssssss! Parece que vc encontrou um portal de teletransporte..')
+                    print('Parece que valeu a pena vc ter Derrotado esse monstro')
+                    Inventario.append('Arma de portais')
+                else:
+                    game_over=True
+                
         elif nome_cenario_atual== 'auditorio':
-            print('FDA')
+            if 'Excalibur' not in Inventario:
+                print('Excalibur')
+                print('Voce achou a Espada Lendaria para derrotar monstros disfarçados de pessoas')
+                print('Ganhou 80 de atk')
+                eu['atk']+=80
+                Inventario.append('Excalibur')
+        elif nome_cenario_atual== 'professor':
+            if nota<75:
+                print('Raul ikeda:Voce nao tem nota suficiente e nem merecimento,volte pra casa')
+                game_over=True
+            else:
+                print('Raul ikeda:Tudo bem,vou adiar o EP para o outro més')
+                print('Tem algo de errado')
+                print('Quando vc vai sair um monstro te ataca e vc percebe que o esse monstro era o Raul disfarçado')
+                if 'Excalibur' not in Inventario:
+                    print('Monstro do Python:Comigo sua chance vai a 0%')
+                else:
+                    print('Monstro do Python:O que é isso na sua mão')
+                    print('É a lendaria Excalibur,então vc ja derrotou o meu irmão,outro motivo para eu te matar')
+                vilao_atual='Raul Alienigena'
+                eu=competidores['avatar']
+                inimigo=competidores[vilao_atual]
+                print('Batalhe e Derrote o Monstro do Python')
+                print()
+                print('Seus status de combate')
+                print(eu)
+                print()
+                print('Status de combate de seu oponente')
+                print(inimigo)
+                print()
+                
+                decida=input('correr ou lutar?')
+                while decida!='lutar' and decida!='correr':
+                    print('Opção Inválida')
+                    decida=input('correr ou lutar?')
+                while eu['hp']>0 and inimigo['hp']>0 :
+                    if decida=='correr':
+                        print('O monstro quebrou a porta, se prepare pra lutar')
+                    print('Sua vez de atacar')
+                    print('Voce tirou {0} de hp do seu oponente'.format(eu['atk']-inimigo['def']))
+                    inimigo['hp']-=eu['atk']-inimigo['def']
+                    if inimigo['hp']>0:
+                        print('Vez do seu inimigo')
+                        print('Voce perdeu {0} de hp para seu oponente'.format(inimigo['atk']-eu['def']))
+                        eu['hp']-=inimigo['atk']-eu['def']
+                        print('Seus status de combate')
+                        print(eu)
+                        print('Status de combate de seu oponente')
+                        print(inimigo)
+                if eu['hp']<=0:
+                    print('Vc nunca ira ganhar de mim')
+                    print('Morra verme')
+                else:
+                    print('Mas como vc me derrotou')
+        
+        opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
+        elif'VITORIA' in opcoes:
+            game_over = True
+            
         else:
             for escolhas,acoes in opcoes.items():
                 print(escolhas+': '+acoes)
-            if arma_de_portais==1:
+            if 'Arma de portais' in Inventario:
                 print()
-                print('arma de portais: Te teleporta para QUALQUER lugar do jogo')
-                print('menos para salas bloqueadas(mesmo desbloqueadas)')
+                print('Arma de portais: Te teleporta para QUALQUER lugar do jogo')
+                print('menos para salas bloqueadas')
                 
             escolha=input("qual opção vc quer?")
-            while escolha=='professor' and i==0 and m==0 and n==0 and g==0 and nome_cenario_atual=='andar professor':
-                print('Sala bloqueada!!! ')
-                print('Para desbloquear vc tem que falar com todos os professores antes de ir para a sala do Raul')
-                print()
-                print('Volte para o elevador')
+            escolha=escolha.lower()
+            escolha=''.join(escolha.split())
+            while escolha not in opcoes and escolha!='armadeportais':
+                print('Opção Inválida')
                 escolha=input("qual opção vc quer?")
-           
-                    
+                escolha=escolha.lower()
+                escolha=''.join(escolha.split())
             if escolha in opcoes:
+                if 'instrumed' and 'Modsim' and 'Natdes' and 'GDE'  not in Inventario:
+                    while escolha=='professor':
+                        print('Sala bloqueada!!! ')
+                        print('Para desbloquear vc tem que falar com todos os professores antes de ir para a sala do Raul')
+                        print()
+                        print('Volte para o elevador')
+                        escolha=input("qual opção vc quer?")
+                        escolha=escolha.lower()
+                        escolha=''.join(escolha.split())
                 nome_cenario_atual= escolha
-            elif escolha=='arma de portais' and arma_de_portais==1:
-                print("inicio: Tomar o elevador para o saguao de entrada")
-                print('andar 1:primeiro andar')
-                print('andar 2:segundo andar')
-                print('andar 3:terceiro andar')
-                print('andar 4:quarto andar')
-                print("andar professor: Tomar o elevador para o andar do professor")
-                print('subsolo')
-                print('restaurante')
-                print()
-                print()
-                print()
+            elif escolha=='armadeportais' and 'Arma de portais' in Inventario:
+                for k in cenarios.keys():
+                    print(k)
                 escolha=input("qual opção vc quer?")
-                nome_cenario_atual= escolha
-            else:
-                print("Sua indecisão foi sua ruína!")
-                game_over = True
+                escolha=escolha.lower()
+                escolha=''.join(escolha.split())
+                if 'instrumed' and 'Modsim' and 'Natdes' and 'GDE'  not in Inventario:
+                    while escolha=='professor':
+                        print('Sala bloqueada!!! ')
+                        print('Para desbloquear vc tem que falar com todos os professores antes de ir para a sala do Raul')
+                        print()                  
+                        escolha=input("qual opção vc quer?")
+                        escolha=escolha.lower()
+                        escolha=''.join(escolha.split())
+                        while escolha not in cenarios:
+                            print('Opção Inválida')
+                            escolha=input("qual opção vc quer?")
+                            escolha=escolha.lower()
+                            escolha=''.join(escolha.split())
+                else:
+                    while escolha not in cenarios:
+                        print('Opção Inválida')
+                        escolha=input("qual opção vc quer?")
+                        escolha=escolha.lower()
+                        escolha=''.join(escolha.split())
+            nome_cenario_atual= escolha
+    if nota>=75 and eu['hp']>0:
+        print('You WIN')
+        print('Mas nao perca tempo comemorando')
+        print('vc ainda tem que fazer o seu EP ate amanha, Boa Sorte')
+    else:
+        print("Você Perdeu!")
 
-    print("Você morreu!")
-#adicionar o auditorio,restaurante,estacionamento
 
 # Programa principal.
 if __name__ == "__main__":
