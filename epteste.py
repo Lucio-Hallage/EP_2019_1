@@ -33,7 +33,7 @@ def carregar_cenarios():
         "professor": {
             "titulo": "O monstro do Python",
             "descricao": "Voce entrou na sala de Raul Ikeda",
-            "opcoes": {'VITÓRIA':'Ganhou o JOGO'}
+            "opcoes": {'fim':'FIM DE JOGO'}
         },
         "biblioteca": {
             "titulo": "Caverna da tranquilidade",
@@ -155,7 +155,7 @@ def combate():
             'atk':40,
             'def':20}
     ,'Zumbi0':{
-            'hp':35,
+            'hp':34,
             'atk':20,
             'def':3}
     ,'Zumbi1':{
@@ -290,7 +290,7 @@ def main():
                 nota+=0.25
                 print('Sua média agora é de {}'.format(nota))
             else:
-                nota-=-1
+                nota-=1
                 print('Voce erroooooou e perdeu 1 ponto na média. Sua média agora é {}'.format(nota))
             if 'Leitura GDE' in Inventario:
                 print('Fernando: O que é isso na sua mao?')
@@ -352,7 +352,7 @@ def main():
                 else:
                     print('Que pena, você errou e perdeu 1 ponto na sua média!')
                     nota=nota-1
-                print('Sua média gora é de {}'.format(nota))
+                print('Sua média agora é de {}'.format(nota))
                 print()
             Inventario.append('instrumed')
         elif nome_cenario_atual== 'professor4':      
@@ -506,7 +506,7 @@ def main():
                     print('Monstro do Python: Mas o que é isso na sua mão?')
                     print('Eu: É a lendaria Excalibur,então vc ja derrotou o meu irmão,outro motivo para eu te matar')
                 vilao_atual='Raul Alienigena'
-                inimigo=vilao_atual
+                inimigo=competidores[vilao_atual]
                 print('Batalhe e Derrote o Monstro do Python')
                 print()
                 print('Seus status de combate')
@@ -543,13 +543,14 @@ def main():
                     print('Morra verme')
                 else:
                     print('Mas como vc me derrotou????Isso é impo..ssi..v...Nãaaaaaaaa...')
-        
+        elif nome_cenario_atual== 'predionovo':
+            nota=0
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             nota=0
             game_over = True
-        elif'VITORIA' in opcoes:
+        elif'fim' in opcoes:
             game_over = True
             
         else:
