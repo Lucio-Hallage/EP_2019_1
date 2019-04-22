@@ -578,6 +578,11 @@ def main():
                         escolha=input("qual opção vc quer?")
                         escolha=escolha.lower()
                         escolha=''.join(escolha.split())
+                        while escolha not in opcoes:
+                            print('Opção Inválida')
+                            escolha=input("qual opção vc quer?")
+                            escolha=escolha.lower()
+                            escolha=''.join(escolha.split())
                 nome_cenario_atual= escolha
             elif escolha=='armadeportais' and 'Arma de portais' in Inventario:
                 for k in cenarios.keys():
