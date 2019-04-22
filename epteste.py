@@ -6,6 +6,9 @@ Created on Wed Apr 17 14:10:14 2019
 """
 import time
 
+def t(t):
+    return time.sleep(t)
+
 A=['A','a']
 B=['B','b']
 
@@ -188,17 +191,21 @@ def main():
     nota=10
     r=0
     c=0
+    d=0
     Inventario=[]
     print("Na hora do sufoco!")
     print("------------------")
+    t(1)
     print()
     print("Parecia uma boa idéia: vou só jogar um pouquinho/assistir Netflix/"
         "embaçar em geral. Amanhã eu começo o EP. Mas isso não deu certo...")
+    t(3)
     print()
     print("É o dia de entregar o EP e você está muuuuito atrasado! Você está "
         "na entrada do Insper, e quer procurar o professor para pedir um "
         "adiamento do EP (boa sorte...)")
     print()
+    t(4)
 
     cenarios, nome_cenario_atual = carregar_cenarios()
     competidores,vilao_atual=combate()
@@ -221,12 +228,15 @@ def main():
             inimigo=vilao_atual
             print()
             print('Voce achou um zumbi veterano pela a escola')
+            t(1)
             print()
             print('Seus status de combate')
             print(eu)
+            t(1)
             print()
             print('Status de combate de seu oponente')
             print(inimigo)
+            t(1)
             print()
             
             decida=input('correr ou lutar?')
@@ -236,18 +246,24 @@ def main():
                 print()
             while eu['hp']>0 and inimigo['hp']>0 and decida=='lutar':
                 print('>>>Sua vez de atacar')
+                t(1)
                 print('Voce tirou {0} de hp do seu oponente'.format(eu['atk']-inimigo['def']))
                 inimigo['hp']-=eu['atk']-inimigo['def']
                 if inimigo['hp']>0:
+                    t(1)
                     print('>>>Vez do seu inimigo')
+                    t(1)
                     print('Voce perdeu {0} de hp para seu oponente'.format(inimigo['atk']-eu['def']))
                     eu['hp']-=inimigo['atk']-eu['def']
                     print()
+                    t(1)
                     print('>>>Seus status de combate')
                     print(eu)
+                    t(1)
                     print()
                     print('>>>Status de combate de seu oponente')
                     print(inimigo)
+                    t(1)
                     print()
                     decida=input('Quer continuar:correr ou lutar?')
                     while decida!='lutar' and decida!='correr':
@@ -277,10 +293,15 @@ def main():
         
         if nome_cenario_atual== 'professor1':
             print('Parece que hoje não é seu dia de sorte!O professor de GDE apareceu!!!')
+            t(2)
             print('A:NatDES')
+            t(0.2)
             print('B:Modsim')
+            t(0.2)
             print('C:InstruMed')
+            t(0.2)
             print('D:DesSoft')
+            t(0.2)
             resposta=input('Fernando Ribeiro:Qual matéria resume o método científico?')
             while resposta!='A' and resposta!='B' and resposta!='C' and resposta!='D':
                 print('Opção Inválida')
@@ -294,26 +315,36 @@ def main():
                 print('Voce erroooooou e perdeu 1 ponto na média. Sua média agora é {}'.format(nota))
             if 'Leitura GDE' in Inventario:
                 print('Fernando: O que é isso na sua mao?')
+                t(1)
                 print('Eu: Nada nao, só a leitura obrigatória da aula')
+                t(1)
                 print('Fernando: Estou muito orgulhoso de voce...Toma aqui mais alguns décimos pra te ajudar...')
                 nota+=0.7
+                t(1)
                 print('Boa, você ganhou mais 0.7 de nota.... Sua nota agora é de {}'.format(nota))
-                
+                t(1)
             Inventario.append('GDE')
         elif nome_cenario_atual== 'veterano':
             print()
+            t(1)
             print('Voce encontrou um veterano gente boa e ele te deu uma dica valiosa...')
             print()
+            t(1)
             print('DICA: Mantenha sua nota sempre acima de 7.5...')
             print()
+            t(1)
         elif nome_cenario_atual== 'professor2': 
             print('A wild Pelicano has appeared!!!')
-            time.sleep(2)
+            t(2)
             print()
             print('A:Taxa de variação')
+            t(0.2)
             print('B:Número de euler')
+            t(0.2)
             print('C:Equação a diferenças')
+            t(0.2)
             print('D:Taxa de variação instantânea')
+            t(0.2)
             resposta=input('Pelicano:O que é uma derivada?')
             while resposta!='A' and resposta!='B' and resposta!='C' and resposta!='D':
                 print('Opção Inválida')
@@ -330,18 +361,26 @@ def main():
         elif nome_cenario_atual== 'professor3': 
             print('OH NO')
             print()
+            t(0.5)
             print('O professor de Instrumed está pedindo o seu relatório')
+            t(2)
             if 'relatório Instrumed' in Inventario:
                 print('Boa.... Como voce entregou o relatorio antes da data, toma aqui uns pontinhos de bonus...')
                 nota+=0.5
+                t(1)
                 print('Voce ganhou 0.5 de bonus... Sua nota agora é de {}'.format(nota))
             else:
                 print('Como voce não tinha o relatório em mãos, Carlinhos te fez uma pergunta...')
                 print()
+                t(1)
                 print('A:Potenciômetro')
+                t(0.2)
                 print('B:Protoboard')
+                t(0.2)
                 print('C:Multimetro')
+                t(0.2)
                 print('D:Trimpot')
+                t(0.2)
                 resposta=input('Carlos Ribeiro:Qual è o aparelho de medição usado nos laboratórios?')
                 while resposta!='A' and resposta!='B' and resposta!='C' and resposta!='D':
                     print('Opção Inválida')
@@ -358,19 +397,27 @@ def main():
         elif nome_cenario_atual== 'professor4':      
             print('PROTÓTIPOS PRA QUARTA')
             print()
+            t(1)
             print('Deu a louca em Victor e Gabriel')
             print()
+            t(2)
             print('Essa não!É segunda e você só tem 2 dias pra fazer 2 protótipos, você pede o adiamento, mas ele te faz uma pergunta em troca?') 
             print()
+            t(2)
             if 'DYM' in Inventario:
                 print('Eu: Calma, eu tenho um livro que vocês vão gostar')
+                t(2)
                 print('Profs: Uau!!! você tem o livro do dym,dessa vez você escapou..')
                 #del 'DYM'do inventario
             else:
                 print('A:É um prototipo pronto para a entrega')
+                t(0.2)
                 print('B:É um prototipo que ainda está em skecth ')
+                t(0.2)
                 print('C:É um prototipo feito para entender melhor o problema')
+                t(0.2)
                 print('D:É um prototipo quase em seu estado final')
+                t(0.2)
                 resposta=input('Victor Macul:O que é um prototipo sujo?')
                 while resposta!='A' and resposta!='B' and resposta!='C' and resposta!='D':
                     print('Opção Inválida')
@@ -388,7 +435,9 @@ def main():
         elif nome_cenario_atual== 'livro':
             print()
             print('A:Livro sobre Python')
+            t(0.2)
             print('B:DYM')
+            t(0.2)
             resposta=input('Qual livro vc quer?')
             while resposta not in A and resposta not in B:
                     print('Opção Inválida')
@@ -403,13 +452,19 @@ def main():
         elif nome_cenario_atual== 'imprimir':
             print()
             print('Aqui voce pode imprimir:')
+            t(1)
             print('A-Leitura obrigatória de GDE')
+            t(0.2)
             print('B-Relatório de Instrumed')
+            t(0.2)
             resposta=input('O que você quer? ')
+            while resposta not in A and resposta not in B:
+                    print('Opção Inválida')
+                    resposta=input('Qual livro você quer?')
             if resposta in A:
                 print('Boaaaaa... Fernando vai ficar orgulhoso')
                 Inventario.append('Leitura GDE')
-            if resposta in B:
+            else:
                 print('O Carlinhos vai amar que você adiantou a entrega do seu relatório')
                 Inventario.append('Relatório de Instrumed')
             print()
@@ -417,7 +472,9 @@ def main():
         elif nome_cenario_atual== 'restaurante':
             if r==0:
                 print('Voce deve estar com fome')
+                t(1)
                 print('Coma uma comida e ganhe 20 de hp')
+                t(2)
                 print('Delicious!!!')
                 eu['hp']+=20
                 print('hp atual:{0}'.format(eu['hp']))
@@ -426,6 +483,7 @@ def main():
             else:
                 print('Voce acabou com toda a nossa comida!')
                 print()
+                t(2)
                 print('Parece que vc comeu muuuito da última vez')
                 print()
         
@@ -435,13 +493,17 @@ def main():
                 inimigo=competidores['Monstro do techlab']
                 print('OOOOOOOOOH')
                 print()
+                t(1)
                 print('Voce achou um Monstro pela no Techlab')
                 print()
+                t(2)
                 print('Seus status de combate')
                 print(eu)
+                t(2)
                 print()
                 print('Status de combate de seu oponente')
                 print(inimigo)
+                t(2)
                 print() 
                 decida=input('correr ou lutar?')
                 while decida!='lutar' and decida!='correr':
@@ -449,18 +511,24 @@ def main():
                     decida=input('correr ou lutar?')
                 while eu['hp']>0 and inimigo['hp']>0 and decida=='lutar':
                     print('>>>Sua vez de atacar:')
+                    t(1)
                     print('Voce tirou {0} de hp do seu oponente'.format(eu['atk']-inimigo['def']))
                     inimigo['hp']-=eu['atk']-inimigo['def']
+                    t(1)
                     if inimigo['hp']>0:
                         print('>>>Vez do seu inimigo:')
+                        t(1)
                         print('Voce perdeu {0} de hp para seu oponente'.format(inimigo['atk']-eu['def']))
                         eu['hp']-=inimigo['atk']-eu['def']
                         print()
+                        t(1)
                         print('>>>Seus status de combate')
                         print(eu)
+                        t(2)
                         print()
                         print('>>>Status de combate de seu oponente')
                         print(inimigo)
+                        t(2)
                         decida=input('correr ou lutar?')
                         while decida!='lutar' and decida!='correr':
                             print('Opção Inválida')
@@ -468,8 +536,11 @@ def main():
                 if inimigo['hp']<=0:
                     print()
                     print('Vc encontrou uma invenção bem esquisita no TechLab...')
+                    t(2)
                     print('Nusssssss! vc encontrou um portal de teletransporte..')
+                    t(2)
                     print('Parece que valeu a pena vc ter Derrotado esse monstro')
+                    t(2)
                     Inventario.append('Arma de portais')
                 elif decida=='correr':
                     print('Vish... Parece que temos um arregao por aqui...Voce perdeu 2 pontos de defesa')
@@ -485,6 +556,7 @@ def main():
             if 'Excalibur' not in Inventario:
                 print('Excalibur')
                 print('-'*len('excalibur'))
+                t(1)
                 print('Você achou a Espada Lendária para derrotar monstros disfarçados de pessoas')
                 print('Ganhou 40 de atk')
                 eu['atk']+=40
@@ -498,48 +570,66 @@ def main():
                 game_over=True
             else:
                 print('Raul ikeda:Tudo bem,vou adiar o EP para o outro mês')
+                t(2)
                 print('Não....Pera...Tem algo de errado...')
+                t(1)
                 print('Quando vc estava saindo, um monstro te atacou e vc percebe que na verdade o monstro era o Raul disfarçado')
+                t(3)
                 if 'Excalibur' not in Inventario:
                     print('Monstro do Python(Raul):Comigo sua chance vai a 0% HA HA HA HA HA')
                 else:
                     print('Monstro do Python: Mas o que é isso na sua mão?')
+                    t(1)
                     print('Eu: É a lendaria Excalibur,então vc ja derrotou o meu irmão,outro motivo para eu te matar')
+                t(2)
                 vilao_atual='Raul Alienigena'
                 inimigo=competidores[vilao_atual]
                 print('Batalhe e Derrote o Monstro do Python')
+                t(1)
                 print()
                 print('Seus status de combate')
                 print(eu)
                 print()
+                t(2)
                 print('Status de combate de seu oponente')
                 print(inimigo)
                 print()
+                t(2)
                 
                 decida=input('correr ou lutar?')
                 while decida!='lutar' and decida!='correr':
                     print('Opção Inválida')
                     decida=input('correr ou lutar?')
                 while eu['hp']>0 and inimigo['hp']>0 :
-                    if decida=='correr':
+                    if decida=='correr' and d==0:
                         print('O monstro te alcançou e você terá que lutar de qualquer jeito')
+                        d=1
                     print()
+                    t(2)
                     print('>>>Sua vez de atacar')
+                    t(1)
                     print('Voce tirou {0} de hp do seu oponente'.format(eu['atk']-inimigo['def']))
                     inimigo['hp']-=eu['atk']-inimigo['def']
                     if inimigo['hp']>0:
                         print()
+                        t(2)
                         print('>>>Vez do seu inimigo')
+                        t(1)
                         print('Voce perdeu {0} de hp para seu oponente'.format(inimigo['atk']-eu['def']))
                         eu['hp']-=inimigo['atk']-eu['def']
                         print()
+                        t(1)
                         print('>>>Seu status de combate')
+                        t(2)
                         print(eu)
                         print()
+                        t(1)
                         print('>>>Status de combate de seu oponente')
+                        t(2)
                         print(inimigo)
                 if eu['hp']<=0:
                     print('Vc nunca ira ganhar de mim')
+                    t(1)
                     print('Morra verme')
                 else:
                     print('Mas como vc me derrotou????Isso é impo..ssi..v...Nãaaaaaaaa...')
@@ -557,6 +647,7 @@ def main():
             print()
             for escolhas,acoes in opcoes.items():
                 print(escolhas+': '+acoes)
+                t(0.2)
             if 'Arma de portais' in Inventario:
                 print('Arma de portais: Te teleporta para QUALQUER lugar do jogo que já foi desbloqueado')
                 
@@ -588,12 +679,14 @@ def main():
             elif escolha=='armadeportais' and 'Arma de portais' in Inventario:
                 for k in cenarios.keys():
                     print(k)
+                    t(0.1)
                 escolha=input("qual opção vc quer?")
                 escolha=escolha.lower()
                 escolha=''.join(escolha.split())
-                if 'instrumed' and 'Modsim' and 'Natdes' and 'GDE'  not in Inventario:
+                if 'instrumed' and 'Modsim' and 'Natdes' and 'GDE' and 'GDE' not in Inventario:
                     while escolha=='professor':
                         print('Sala bloqueada!!! ')
+                        t(1)
                         print('Para desbloquear vc tem que falar com todos os professores antes de ir para a sala do Raul')
                         print()
                         escolha=input("qual opção vc quer?")
@@ -613,7 +706,9 @@ def main():
             nome_cenario_atual= escolha
     if nota>=7.5 and eu['hp']>0:
         print('You WIN')
-        print('Mas nao perca tempo comemorando')
+        t(1)
+        print('Mas não perca tempo comemorando')
+        t(1)
         print('vc ainda tem que fazer o seu EP ate amanha, Boa Sorte')
     else:
         print("Você Perdeu e nao conseguiu o adiamento do EP! Mais sorte da próxima vez... ")
