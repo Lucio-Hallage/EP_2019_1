@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Apr 17 14:10:14 2019
+Created on Sat Apr 20 20:36:53 2019
 
-@author: insper
+@author: beatrizcf
 """
+
 import time
 
 def carregar_cenarios():
@@ -27,7 +29,7 @@ def carregar_cenarios():
                 'restaurante':'Vá comer no restaurante'
             }
         },
-        "professor": {
+        "professor misterioso": {
             "titulo": "O monstro do Python",
             "descricao": "Voce entrou na sala de Raul Ikeda",
             "opcoes": {'VITORIA':'Ganhou o JOGO'}
@@ -39,7 +41,7 @@ def carregar_cenarios():
                 "inicio": "Voltar para o saguao de entrada",
                 'livro':'pegar um livro'
             }
-        },"andar1": {
+        },"andar 1": {
             "titulo": "Andar da Verdade",
             "descricao": "Voce chegou ao andar da sala de um professor",
             "opcoes": {

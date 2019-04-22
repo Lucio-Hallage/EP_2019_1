@@ -18,6 +18,7 @@ def subsolo():
     print(B)
     opcao=input('O que vc deseja fazer? ')
     if opcao==respostaA:
+        local=opcaoelevador()
         #volta para o elevador
     elif opcao==respostaB:
         local='techlab'
@@ -35,10 +36,12 @@ def subsolo():
             if opcao in respostaB:
                 print('Ahhhhhhhhhhhhhhhh naooooooooooo... Vc foi teletransportado para algum lugar...')
                 #fazer random lugar 
-                print('vish, vc foi parar no {0}, no andar {1}...'.format(lugar,andar))
+                print('vish, vc foi parar no {0}, no andar {1}...Agora vc tem uma arma de teletransporte no seu inventario '.format(lugar,andar))
+                inventario.append('Arma de teletransporte')
                 #voltar funcao do andar que ele for parar
         if opcao in nao:
             print('Boa, as vezes é melhor nao arriscar...')
+            print()
             local='elevador'
             print('ELEVADOR')
             print('-'*len(local))
